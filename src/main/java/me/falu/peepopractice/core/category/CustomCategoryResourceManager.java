@@ -33,6 +33,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.UUID;
 
 public class CustomCategoryResourceManager {
     public static final List<PracticeCategory> CUSTOM_CATEGORIES = new ArrayList<>();
@@ -70,6 +71,9 @@ public class CustomCategoryResourceManager {
 
                         if (main.has("id")) {
                             category = category.setId(main.get("id").getAsString());
+                        }
+                        if (main.has("name")) {
+                            category.setName(main.get("name").getAsString());
                         }
                         if (main.has("can_have_empty_inventory")) {
                             category = category.setCanHaveEmptyInventory(main.get("can_have_empty_inventory").getAsBoolean());
@@ -153,6 +157,9 @@ public class CustomCategoryResourceManager {
                         if (main.has("world_properties")) {
                             JsonObject worldProperties = main.get("world_properties").getAsJsonObject();
                             WorldProperties properties = new WorldProperties();
+                            if (worldProperties.has("seed")) {
+                                properties.setSeed(worldProperties.get("seed").getAsLong());
+                            }
                             if (worldProperties.has("world_registry_key")) {
                                 properties = properties.setWorldRegistryKey(parseDimensionKey(worldProperties.get("world_registry_key")));
                             }

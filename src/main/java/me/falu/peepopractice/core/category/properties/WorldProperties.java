@@ -18,6 +18,7 @@ public class WorldProperties extends BaseProperties {
     private boolean spawnChunksDisabled = false;
     private String seedListPath;
     private Difficulty startDifficulty = Difficulty.EASY;
+    private long seed = 0;
 
     public RegistryKey<World> getWorldRegistryKey() {
         return this.worldRegistryKey;
@@ -88,6 +89,18 @@ public class WorldProperties extends BaseProperties {
     public WorldProperties setStartDifficulty(Difficulty startDifficulty) {
         this.startDifficulty = startDifficulty;
         return this;
+    }
+
+    public long getSeed() {
+        return this.seed;
+    }
+
+    public void setSeed(long seed) {
+        this.seed = seed;
+    }
+
+    public boolean hasCustomSeed() {
+        return this.seed != 0;
     }
 
     public interface ConditionTask {

@@ -34,6 +34,7 @@ public class PracticeCategory {
     @Getter private boolean hidden;
     private boolean canHaveEmptyInventory;
     @Getter private boolean fillerCategory;
+    @Getter private String name;
 
     public PracticeCategory() {
         this(false);
@@ -42,6 +43,11 @@ public class PracticeCategory {
     public PracticeCategory(boolean aa) {
         this.preferences = new ArrayList<>();
         this.aa = aa;
+    }
+
+    public PracticeCategory setName(String name) {
+        this.name = name;
+        return this;
     }
 
     public PracticeCategory setId(String id) {
@@ -179,7 +185,7 @@ public class PracticeCategory {
     }
 
     public String getName(boolean showPb) {
-        StringBuilder text = new StringBuilder((this.isFillerCategory() ? Formatting.ITALIC : "") + this.getTranslatedName() + (showPb || this.isFillerCategory() ? Formatting.RESET : ""));
+        StringBuilder text = new StringBuilder((this.isFillerCategory() ? Formatting.ITALIC : "") + (this.name == null ? this.getTranslatedName() : this.name) + (showPb || this.isFillerCategory() ? Formatting.RESET : ""));
         if (showPb) {
             text.append(this.getPbText());
         }
