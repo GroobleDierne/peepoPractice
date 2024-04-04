@@ -66,6 +66,9 @@ public class InventoryOptionsScreen extends Screen {
 
         JsonObject object = PracticeWriter.INVENTORY_WRITER.get();
         JsonArray profiles = object.getAsJsonArray(this.category.getId());
+        if (profiles == null) {
+            profiles = new JsonArray();
+        }
 
         for (int i = 0; i < 3; i++) {
             int x = (this.width - rowWidth) / 2;

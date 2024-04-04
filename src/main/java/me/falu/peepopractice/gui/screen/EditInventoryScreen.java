@@ -236,6 +236,9 @@ public class EditInventoryScreen extends PlayerlessHandledScreen {
     private void saveInventory() {
         JsonObject object = PracticeWriter.INVENTORY_WRITER.get();
         JsonArray profiles = object.getAsJsonArray(this.category.getId());
+        if (profiles == null) {
+            profiles = new JsonArray();
+        }
         JsonObject profile = profiles.size() <= this.selectedProfile ? new JsonObject() : profiles.get(this.selectedProfile).getAsJsonObject();
 
         for (int i = 0; i < PeepoPractice.PLAYERLESS_INVENTORY.size(); i++) {
