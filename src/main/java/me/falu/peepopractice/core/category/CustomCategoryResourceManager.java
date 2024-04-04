@@ -33,7 +33,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.UUID;
 
 public class CustomCategoryResourceManager {
     public static final List<PracticeCategory> CUSTOM_CATEGORIES = new ArrayList<>();

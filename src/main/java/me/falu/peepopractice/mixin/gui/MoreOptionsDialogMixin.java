@@ -29,6 +29,9 @@ public class MoreOptionsDialogMixin {
     )
     private OptionalLong peepoPractice$insertSeedList(OptionalLong original) {
         if (PeepoPractice.CATEGORY.hasWorldProperties()) {
+            if (PeepoPractice.CATEGORY.getWorldProperties().hasCustomSeed()) {
+                return OptionalLong.of(PeepoPractice.CATEGORY.getWorldProperties().getSeed());
+            }
             if (PeepoPractice.CATEGORY.getWorldProperties().hasSeedListPath()) {
                 String seedListPath = PeepoPractice.CATEGORY.getWorldProperties().getSeedListPath();
                 try {

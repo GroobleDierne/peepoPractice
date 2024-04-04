@@ -123,9 +123,6 @@ public abstract class MinecraftServerMixin implements GenerationShutdownOwner {
         GeneratorOptions generatorOptions = this.saveProperties.getGeneratorOptions();
         boolean bl = generatorOptions.isDebugWorld();
         long l = generatorOptions.getSeed();
-        if (PeepoPractice.CATEGORY.hasWorldProperties() && PeepoPractice.CATEGORY.getWorldProperties().hasCustomSeed()) {
-            l = PeepoPractice.CATEGORY.getWorldProperties().getSeed();
-        }
         long m = BiomeAccess.hashSeed(l);
         ImmutableList<Spawner> list = ImmutableList.of(new PhantomSpawner(), new PillagerSpawner(), new CatSpawner(), new ZombieSiegeManager(), new WanderingTraderManager(serverWorldProperties));
         SimpleRegistry<DimensionOptions> simpleRegistry = generatorOptions.getDimensionMap();
